@@ -15,17 +15,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, unbound]
 
     steps:
       - uses: actions/checkout@v7
         with:
           submodules: recursive
-
-      - name: Install aarch64-linux-gnu- toolchain
-        run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends -y gcc-aarch64-linux-gnu
 
       - name: Install aarch64-unknown-none-softfloat rust target
         run: |

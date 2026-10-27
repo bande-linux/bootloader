@@ -8,20 +8,14 @@ on:
 
 jobs:
   test:
-    name: Pytest (${{ matrix.os }} + ${{ matrix.compiler }})
-    runs-on: ${{ matrix.os }}
+    name: Pytest (${{ matrix.compiler }})
+    runs-on: [self-hosted, unbound]
 
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            compiler: gcc
-          - os: ubuntu-latest
-            compiler: llvm
-          - os: macos-14
-            compiler: llvm-brew
-          - os: macos-15
-            compiler: llvm-brew
+          - compiler: gcc
+          - compiler: llvm
 
     steps:
       - name: Checkout code
@@ -38,25 +32,14 @@ jobs:
           pip install -r requirements.txt
           pip install pytest
 
-      - name: Install arm64 GCC cross-compiler
-        if: matrix.compiler == 'gcc'
-        run: |
-          sudo apt-get update
-          sudo apt install gcc-aarch64-linux-gnu
-
       - name: Install Clang
         if: matrix.compiler == 'llvm'
         run: |
           sudo apt-get update
           sudo apt-get install -y llvm lld
 
-      - name: Install Clang on macOS w/ brew
-        if: matrix.compiler == 'llvm-brew'
-        run: |
-          brew install llvm lld
-
       - name: Run pytest with clang
-        if: matrix.os == 'ubuntu-latest' && matrix.compiler == 'llvm'
+        if: matrix.compiler == 'llvm'
         env:
           USE_CLANG: '1'
         run: PATH="$(llvm-config --prefix)/bin:$PATH" pytest
