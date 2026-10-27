@@ -26,8 +26,6 @@ jobs:
 
       - name: install nightly rust
         run: |
-          rm -f ~/.cargo/bin/rustfmt
-          rm -f ~/.cargo/bin/cargo-fmt
           rustup toolchain install nightly --component rustfmt --component clippy --allow-downgrade
 
       - name: Run format-check
