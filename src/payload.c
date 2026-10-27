@@ -30,13 +30,13 @@ static const u8 cpio_magic[] = {'0', '7', '0', '7', '0'};        // '1' or '2' n
 static const u8 img4_magic[] = {0x16, 0x04, 'I', 'M', 'G', '4'}; // IA5String 'IMG4'
 static const u8 sig_magic[] = {'u', 'n', 'b', 'o', 'o', 't', '_', 's', 'i', 'g'};
 static const u8 initramfs_magic[] = {
-    'u', 'n', 'b', 'o', 'o', 't', '_', 'i', 'n',
-    'i', 't', 'r', 'a', 'm', 'f', 's'}; // followed by size as little endian uint32_t
+    'u', 'n', 'b', 'o', 'o', 't', '_', 'i',
+    'n', 'i', 't', 'r', 'a', 'm', 'f', 's'}; // followed by size as little endian uint32_t
 static const u8 empty[] = {0, 0, 0, 0};
 
 // custom logo is RGBA with 256x256 retina logo followed by half resolution
-static const u8 custom_logo_magic[] = {'u', 'n', 'b', 'o', 'o', 't', '_', 'l', 'o', 'g',
-                                       'o', '_', '2', '5', '6', '1', '2', '8'};
+static const u8 custom_logo_magic[] = {'u', 'n', 'b', 'o', 'o', 't', '_', 'l', 'o',
+                                       'g', 'o', '_', '2', '5', '6', '1', '2', '8'};
 #define CUSTOM_LOGO_SIZE (4 * ((256 * 256) + (128 * 128)))
 
 static char expect_compatible[256];

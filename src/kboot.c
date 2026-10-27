@@ -310,7 +310,8 @@ static int dt_set_chosen(void)
                     strlen(os_firmware.string) + 1))
         bail("FDT: couldn't set unbound,os-fw-version\n");
 
-    if (fdt_setprop(dt, node, "unbound,unboot-stage2-version", unboot_version, strlen(unboot_version) + 1))
+    if (fdt_setprop(dt, node, "unbound,unboot-stage2-version", unboot_version,
+                    strlen(unboot_version) + 1))
         bail("FDT: couldn't set unbound,unboot-stage2-version\n");
 
     if (dt_set_rng_seed_sep(node)) {

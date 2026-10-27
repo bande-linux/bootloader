@@ -216,10 +216,10 @@ void cpufreq_fixup_cluster(const struct cluster_t *cluster)
 {
     u64 val = read64(cluster->base + CLUSTER_PSTATE);
 
-    // Older versions of unboot stage 1 erroneously cleared CLUSTER_PSTATE_UNK_Mx, so put it back for
-    // firmwares it supported (don't touch anything newer, which includes newer devices).
-    // Also clear the CLUSTER_PSTATE_DESIRED2 field since it doesn't seem to do anything, and isn't
-    // used on newer chips.
+    // Older versions of unboot stage 1 erroneously cleared CLUSTER_PSTATE_UNK_Mx, so put it back
+    // for firmwares it supported (don't touch anything newer, which includes newer devices). Also
+    // clear the CLUSTER_PSTATE_DESIRED2 field since it doesn't seem to do anything, and isn't used
+    // on newer chips.
     if (os_firmware.version != V_UNKNOWN && os_firmware.version <= V13_3) {
         u64 bits = 0;
         switch (chip_id) {
