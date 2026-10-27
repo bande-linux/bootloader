@@ -167,7 +167,8 @@ class Toolchain:
             llddir = clangdir
 
         # pylint: disable=invalid-name
-        self.CC = clangdir + "clang --target=" + self.ARCH + " " + self.CFLAGS
+        target = self.ARCH or "aarch64-linux-gnu-"
+        self.CC = clangdir + "clang --target=" + target + " " + self.CFLAGS
         self.LD = llddir + "ld.lld -maarch64elf --pie"
         self.OBJCOPY = clangdir + "llvm-objcopy"
         self.OBJDUMP = clangdir + "llvm-objdump"
