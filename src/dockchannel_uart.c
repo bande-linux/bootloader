@@ -4,6 +4,7 @@
 
 #include "adt.h"
 #include "iodev.h"
+#include "string.h"
 #include "types.h"
 #include "utils.h"
 #include "vsprintf.h"
@@ -11,6 +12,7 @@
 #define DATA_TX8      0x4004
 #define DATA_TX_FREE  0x4014
 #define DATA_RX8      0x401c
+#define DATA_RX32     0x4028
 #define DATA_RX_COUNT 0x402c
 
 static u64 uart_base = 0;
@@ -86,14 +88,30 @@ void dockchannel_uart_write(const void *buf, size_t count)
 size_t dockchannel_uart_read(void *buf, size_t count)
 {
     u8 *p = buf;
-    size_t recvd = 0;
+    size_t left = count;
 
-    while (count--) {
-        *p++ = dockchannel_uart_getbyte();
-        recvd++;
+    if (!uart_base)
+        return 0;
+
+    while (left) {
+        u32 avail = read32(uart_base + DATA_RX_COUNT);
+
+        while (avail >= 4 && left >= 4) {
+            u32 v = read32(uart_base + DATA_RX32);
+
+            memcpy(p, &v, 4);
+            p += 4;
+            left -= 4;
+            avail -= 4;
+        }
+        while (avail && left) {
+            *p++ = read32(uart_base + DATA_RX8) >> 8;
+            left--;
+            avail--;
+        }
     }
 
-    return recvd;
+    return count;
 }
 
 int dockchannel_uart_printf(const char *fmt, ...)
