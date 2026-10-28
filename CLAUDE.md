@@ -4,6 +4,20 @@ the source of truth; keep it current. Open work goes to [NOTES/backlog.md](NOTES
 
 The rules below override your defaults. Follow them unless I say otherwise in the session.
 
+## 0. Proper implementations only
+
+No shortcuts and no band-aids. Every change is the long-term implementation:
+
+- Fix the cause, not the symptom. Never widen a check, raise a limit, skip a step or special-case
+  a value to make something work without knowing why that is correct.
+- Support a new firmware, iBoot or hardware version by understanding it: get its real layout and
+  behaviour (a trace, the ADT, the macOS driver), implement it explicitly, and keep refusing
+  versions that are not understood.
+- Write it so it could go upstream as it is.
+
+When the proper implementation is not possible yet, say so and leave the gap visible (a refused
+version, a missing feature, a backlog item) instead of covering it up.
+
 ## 1. No comments
 
 Write none, in C, Rust, Python, Makefiles or shell. The only exception is a fact this repository
