@@ -86,7 +86,6 @@ you added that fails §3. Expect that to be most of them.
     policy, from code or from the proxy shell
   - act on the real Mac: install a stage 1, boot a payload, run a proxyclient tool against it,
     a DFU restore
-- I commit. Never run git commit, push or stash.
 
 ## 6. Architecture
 
