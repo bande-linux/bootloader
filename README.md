@@ -10,7 +10,7 @@ $ rustup target add aarch64-unknown-none-softfloat
 ```
 
 ```shell
-$ git clone --recursive https://github.com/unbound-linux/bootloader.git
+$ git clone --recursive https://github.com/bande-linux/bootloader.git
 $ cd bootloader
 $ make
 ```
@@ -38,7 +38,7 @@ To build verbosely, use `make V=1`.
 If you have a container runtime installed, like Podman or Docker, you can make use of the compose setup, which contains all build dependencies.
 
 ```shell
-$ git clone --recursive https://github.com/unbound-linux/bootloader.git
+$ git clone --recursive https://github.com/bande-linux/bootloader.git
 $ cd bootloader
 $ podman-compose run unboot make
 $ # or

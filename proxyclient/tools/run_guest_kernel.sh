@@ -62,7 +62,7 @@ if [ -n "$args" ]; then
     echo "chosen.bootargs=$args" >>"$TMPDIR/unboot-linux.bin"
 fi
 if [ -n "${esp}" ]; then
-    echo "chosen.unbound,efi-system-partition=${esp}" >>"$TMPDIR/unboot-linux.bin"
+    echo "chosen.bande,efi-system-partition=${esp}" >>"$TMPDIR/unboot-linux.bin"
 fi
 
 cat "$kernel_base"/arch/arm64/boot/dts/apple/*.dtb >>"$TMPDIR/unboot-linux.bin"

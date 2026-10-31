@@ -7,7 +7,7 @@ on:
 jobs:
   test:
     name: Pytest (${{ matrix.compiler }})
-    runs-on: [self-hosted, unbound]
+    runs-on: [self-hosted, bande]
 
     strategy:
       matrix:

@@ -1,4 +1,4 @@
-# unbound-linux bootloader
+# bande-linux bootloader
 
 the source of truth; keep it current. Open work goes to [NOTES/backlog.md](NOTES/backlog.md).
 

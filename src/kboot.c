@@ -293,26 +293,26 @@ static int dt_set_chosen(void)
         bail("FDT: /chosen node not found in devtree\n");
 
     if (is_mac) {
-        if (fdt_setprop(dt, node, "unbound,iboot1-version", system_firmware.iboot,
+        if (fdt_setprop(dt, node, "bande,iboot1-version", system_firmware.iboot,
                         strlen(system_firmware.iboot) + 1))
-            bail("FDT: couldn't set unbound,iboot1-version\n");
+            bail("FDT: couldn't set bande,iboot1-version\n");
 
-        if (fdt_setprop(dt, node, "unbound,system-fw-version", system_firmware.string,
+        if (fdt_setprop(dt, node, "bande,system-fw-version", system_firmware.string,
                         strlen(system_firmware.string) + 1))
-            bail("FDT: couldn't set unbound,system-fw-version\n");
+            bail("FDT: couldn't set bande,system-fw-version\n");
     }
 
-    if (fdt_setprop(dt, node, "unbound,iboot2-version", os_firmware.iboot,
+    if (fdt_setprop(dt, node, "bande,iboot2-version", os_firmware.iboot,
                     strlen(os_firmware.iboot) + 1))
-        bail("FDT: couldn't set unbound,iboot2-version\n");
+        bail("FDT: couldn't set bande,iboot2-version\n");
 
-    if (fdt_setprop(dt, node, "unbound,os-fw-version", os_firmware.string,
+    if (fdt_setprop(dt, node, "bande,os-fw-version", os_firmware.string,
                     strlen(os_firmware.string) + 1))
-        bail("FDT: couldn't set unbound,os-fw-version\n");
+        bail("FDT: couldn't set bande,os-fw-version\n");
 
-    if (fdt_setprop(dt, node, "unbound,unboot-stage2-version", unboot_version,
+    if (fdt_setprop(dt, node, "bande,unboot-stage2-version", unboot_version,
                     strlen(unboot_version) + 1))
-        bail("FDT: couldn't set unbound,unboot-stage2-version\n");
+        bail("FDT: couldn't set bande,unboot-stage2-version\n");
 
     if (dt_set_rng_seed_sep(node)) {
         if (dt_set_rng_seed_adt(node))
@@ -940,8 +940,8 @@ static int dt_set_ipd(void)
     }
     u8 code = kblang[1];
 
-    if (fdt_setprop_u32(dt, chosen, "unbound,kblang-code", code))
-        bail("FDT: couldn't set unbound,kblang-code\n");
+    if (fdt_setprop_u32(dt, chosen, "bande,kblang-code", code))
+        bail("FDT: couldn't set bande,kblang-code\n");
 
     const char *path = fdt_get_alias(dt, "keyboard");
     if (path == NULL)
