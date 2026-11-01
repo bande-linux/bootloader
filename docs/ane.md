@@ -72,7 +72,7 @@ buffer map, submit, everything else in userspace. A misc-device or UIO driver wo
 rules but loses GEM, dma-buf and the scheduler, and could never go upstream. Upstreaming is
 blocked by the DRM rule that new uAPI needs a real open-source userspace
 (`Documentation/gpu/drm-uapi.rst`, "Open-Source Userspace Requirements"). A userspace that only
-replays Apple-compiled `.hwx` is unlikely to pass. Plan: out of tree in our kernel fork until an
+replays Apple-compiled `.hwx` is unlikely to pass. Plan: a held patch in the kernel repo, not upstream, until an
 open compiler exists.
 
 Work beyond eiln's module: t8112 match data, t8110 DART handling, DT binding and nodes for

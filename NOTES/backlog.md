@@ -9,7 +9,7 @@ or DART fault.
 - [ ] A. t8112 ADT facts, ADT-driven `fw/ane.py`, H14 `add.hwx` compiled on the host
 - [ ] B. Power up the ANE and run the add through proxyclient
 - [ ] C. `hv/trace_ane.py` and a macOS trace, only if B stalls
-- [ ] D. Port `eiln/ane` to v7.3 and t8112 in the kernel fork
+- [ ] D. Port `eiln/ane` to v7.3 and t8112 as a patch in the kernel repo
 - [ ] E. One CoreML-compiled model matches CoreML output on Linux
 - [ ] F. whisper.cpp encoder on the ANE
 - [ ] G. Open task-descriptor compiler

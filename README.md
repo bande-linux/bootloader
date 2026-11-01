@@ -1,44 +1,31 @@
-# unboot: A bootloader and experimentation playground for Apple Silicon
+# unboot: the Bande bootloader for Apple Silicon
+
+Bande's fork of [m1n1](https://github.com/AsahiLinux/m1n1): the stage 1 the installer sets as the
+custom boot object, the stage 2 on the EFI system partition, and the USB proxy that `proxyclient/`
+drives for hardware experiments.
 
 ## Building
 
-You need an `aarch64-linux-gnu-gcc` cross-compiler toolchain (or a native one, if running on ARM64).
-You will also need to install the `aarch64-unknown-none-softfloat` toolchain for rust.
+You need an `aarch64-linux-gnu-gcc` cross-compiler (or a native one on arm64) and the
+`aarch64-unknown-none-softfloat` Rust target:
 
 ```shell
 $ rustup target add aarch64-unknown-none-softfloat
-```
-
-```shell
-$ git clone --recursive https://github.com/bande-linux/bootloader.git
+$ git clone https://github.com/bande-linux/bootloader.git
 $ cd bootloader
 $ make
 ```
 
-To build on a native ARM64 machine:
-* On Linux, use `make ARCH=`.
-* On macOS using Homebrew:
-```shell
-$ brew install llvm lld
-$ make
-```
-* On macOS using MacPorts:
-```shell
-$ sudo port install llvm clang
-$ sudo port select llvm llvm-mp-<version>
-$ make
-```
+On macOS, `make` uses clang and lld (`brew install llvm lld`).
 
-The output will be in `build/unboot.macho`.
-
-To build verbosely, use `make V=1`.
+The output is `build/unboot.macho` and `build/unboot.bin`. `make V=1` builds verbosely.
 
 ### Building using the container setup
 
 If you have a container runtime installed, like Podman or Docker, you can make use of the compose setup, which contains all build dependencies.
 
 ```shell
-$ git clone --recursive https://github.com/bande-linux/bootloader.git
+$ git clone https://github.com/bande-linux/bootloader.git
 $ cd bootloader
 $ podman-compose run unboot make
 $ # or
@@ -143,4 +130,4 @@ unboot embeds portions of the [dwc3 usb linux driver](https://git.kernel.org/pub
 unboot embeds portions of [musl-libc](https://musl.libc.org/)'s floating point library, which are MIT licensed and copyright
 * Copyright (c) 2017-2018, Arm Limited.
 
-unboot embeds some rust crates. Licenses can be found in the vendor directory for every crate.
+unboot links the Rust crates in `rust/Cargo.lock`; each carries its own licence.
