@@ -235,6 +235,9 @@ class UartInterface(Reloadable):
                 self.tty_log.flush()
 
     def ttymode(self, dev=None):
+        if not sys.stdin.isatty():
+            return
+
         if dev is None:
             dev = self.dev
 

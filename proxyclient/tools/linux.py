@@ -162,6 +162,4 @@ print("DAIF: %x" % daif)
 
 p.kboot_boot(boot_addr)
 
-# Miniterm needs a terminal; a loader run from a script just hands off.
-if sys.stdin.isatty():
-    iface.ttymode(tty_dev)
+iface.ttymode(tty_dev)
