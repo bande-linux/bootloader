@@ -35,8 +35,9 @@
 
 struct vector_args next_stage;
 
-const char version_tag[] = "##unboot_ver##" BUILD_TAG;
-const char *const unboot_version = version_tag + 14;
+#define VERSION_MARKER "##unboot_ver##"
+const char version_tag[] = VERSION_MARKER BUILD_TAG;
+const char *const unboot_version = version_tag + sizeof(VERSION_MARKER) - 1;
 
 u32 board_id = ~0, chip_id = ~0;
 
