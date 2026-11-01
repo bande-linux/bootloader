@@ -86,6 +86,10 @@ under that same license. Starting from version 2.0.0, unboot is licensed
 under the terms of the [GNU General Public License version 2](LICENSE) (or later); any
 code checked in thereafter is available under the terms of the GPL exclusively.
 
+* Copyright The Asahi Linux Contributors
+
+Please see the Git history of [m1n1](https://github.com/AsahiLinux/m1n1) for authorship information.
+
 Portions of unboot are based on mini:
 
 * Copyright (C) 2008-2010 Hector Martin "marcan" <marcan@marcan.st>
