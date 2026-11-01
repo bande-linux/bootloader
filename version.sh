@@ -7,8 +7,8 @@ if [ -n "$UNBOOT_VERSION_TAG" ]; then
     version="$UNBOOT_VERSION_TAG"
 elif [ -e ".git" ]; then
     version="$(git describe --tags --always --dirty)"
-elif [ "$(echo "${dirbase}" | cut -c1-5)" = "unboot-" ]; then
-    version=$(echo "${dirbase}" | cut -c6-)
+elif [ "${dirbase#unboot-}" != "${dirbase}" ]; then
+    version="${dirbase#unboot-}"
     version="v${version##v}"
 else
     version="unknown"
