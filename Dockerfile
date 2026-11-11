@@ -1,4 +1,4 @@
-FROM debian:trixie-slim
+FROM debian:forky-slim
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y build-essential bash curl git locales gcc-aarch64-linux-gnu libc6-dev-arm64-cross device-tree-compiler \
